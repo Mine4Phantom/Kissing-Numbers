@@ -79,9 +79,11 @@ print("Max number of 5d spheres around a 5d sphere: ", calculateSurfaceArea(auxS
 # Se (xn-xm)**2 > 4 ou y ou z ja verficamos a condição (eficiência)
 # Podemos também tentar fazer verificações mais locais a cada esfera por causa de eficiência.
 # All generated spheres must be contained in a square of 6r, or 6 units:
-#   - This can be done simply by making sure all coordinates are less than 6
+#   - This can be done simply by making sure all coordinates are in between -3 and 3
 #   - After spawning a sphere anywhere in the cube, we shall then reduce or increase all coordinates proporcinally until
 #     we have a distance of 2 to the main sphere (sph0):
 #       - This is done with an approximation algorythm until a desired precision.
-# 
-# 
+#       
+# There is a problem with the current approach. Assigning random values will result in a lot of free space
+# We should try to avoid a weird distance between two spheres avoiding distances like 3.8 which barely allows for a sphere to fit there.
+# We should follow some sort of curve or function to maximize proximity between spheres
