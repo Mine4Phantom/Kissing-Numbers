@@ -31,6 +31,12 @@ def sphereGenerator(dimention):
     return sphere
 
 
+# Define how much to move the sphere
+
+def moverCalc(sphere, auxsphere):
+    distance = 2 - euclideanDistance(sphere, auxsphere)
+    return math.exp(distance/7)
+
 # Move the sphere to distance 2 of the main sphere
 
 def sphereMover(sphere):
@@ -47,16 +53,16 @@ def sphereMover(sphere):
     
     if (distance == 0):
         print(" We got a 0 spawn")
-    cnt = 100
+    cnt = 1000
     while(cnt > 0):
         if (distance > 2): # This is an attempt to approximate the values, there are better algorithms
             for i in range(dimention):
-                sphere[i] = sphere[i]*0.99
+                sphere[i] = sphere[i]*moverCalc(sphere, auxsphere)
         elif (distance < 2):
             for j in range(dimention):
-                sphere[j] = sphere[j]*1.01
+                sphere[j] = sphere[j]*moverCalc(sphere, auxsphere)
         
-        if round(euclideanDistance(sphere, auxsphere),2) == 2:
+        if round(euclideanDistance(sphere, auxsphere),4) == 2:
             return sphere
         cnt -= 1
 
@@ -64,7 +70,7 @@ def sphereMover(sphere):
 
 def saveResults(results_list):
     f = open("results.txt", "a") # Maybe change this to create a new file each time
-    f.write(";\n")
+    f.write("\n Obtained %s results for a %s dimentional sphere:\n\n" % (len(results_list)-1, len(results_list[0])))
     for i in range(len(results_list)):
         f.write(str(results_list[i]))
         f.write("\n")
@@ -73,10 +79,10 @@ def saveResults(results_list):
 
 
 def main():
-    initial = [0,0,0]
+    initial = [0,0]
     results = [initial]
     for i in range(10000):
-        sphere = sphereGenerator(3)
+        sphere = sphereGenerator(2)
         sphere = sphereMover(sphere)
         for i in range(len(results)):
             if(sphere is None):
