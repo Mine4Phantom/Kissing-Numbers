@@ -74,11 +74,11 @@ print("Max number of 5d spheres around a 5d sphere: ", calculateSurfaceArea(auxS
 # Distancia entre 2 pontos no espaço-
 #   sqrt((x2-x1)**2+(y2-y1)**2+(z2-z1)**2)
 #
-# No caso da nossa esfera precisamos que esta equação iguale a 2 para todos os pares sph0-sphn
-# Precisamos tambem que todos os pares sphn-sphm tenham uma distância superior a 2
+# No caso da nossa esfera precisamos que esta equação iguale a 2 para todos os pares sph0-sphn DONE
+# Precisamos tambem que todos os pares sphn-sphm tenham uma distância superior a 2 DONE
 # Se (xn-xm)**2 > 4 ou y ou z ja verficamos a condição (eficiência)
 # Podemos também tentar fazer verificações mais locais a cada esfera por causa de eficiência.
-# All generated spheres must be contained in a square of 6r, or 6 units:
+# All generated spheres must be contained in a square of 6r, or 6 units: DONE
 #   - This can be done simply by making sure all coordinates are in between -3 and 3
 #   - After spawning a sphere anywhere in the cube, we shall then reduce or increase all coordinates proporcinally until
 #     we have a distance of 2 to the main sphere (sph0):
