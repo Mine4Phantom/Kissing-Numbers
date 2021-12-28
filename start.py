@@ -2,7 +2,8 @@ import math
 import random
 
 point1a = []
-point2a = [] 
+point2a = []
+dimention = 2
 
 # Euclidean distance of points
 
@@ -24,7 +25,7 @@ def isDistanceGT2(point1, point2):
 
 # Generating spheres in a square, cube, tesseract...
 
-def sphereGenerator(dimention):
+def sphereGenerator():
     sphere = []
     for i in range(dimention):
         sphere.append(round(random.uniform(-3,3), 3))
@@ -82,7 +83,7 @@ def main():
     initial = [0,0]
     results = [initial]
     for i in range(10000):
-        sphere = sphereGenerator(2)
+        sphere = sphereGenerator()
         sphere = sphereMover(sphere)
         for i in range(len(results)):
             if(sphere is None):

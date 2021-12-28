@@ -12,15 +12,36 @@ def setSphere(dimention, radius):
 #math.comb(7,5)
 
 #Need an iterative formula
+
+
+
+
+# def calculateSurfaceArea(sphere, dimention):
+#     if dimention == 2:
+#         return 2 * math.pi * sphere[dimention]
+#     if dimention == 3:
+#         return 4 * math.pi * sphere[dimention]**2
+#     if dimention == 4:
+#         return 2 * math.pi **2*sphere[dimention]**3
+#     if dimention == 5:
+#         return 8 / 3*math.pi**2*sphere[dimention]**4
+    
+
 def calculateSurfaceArea(sphere, dimention):
-    if dimention == 2:
-        return 2*math.pi*sphere[dimention]
-    if dimention == 3:
-        return 4*math.pi*sphere[dimention]**2
-    if dimention == 4:
-        return 2*math.pi**2*sphere[dimention]**3
-    if dimention == 5:
-        return 8/3*math.pi**2*sphere[dimention]**4
+    if dimention % 2:
+        print(dimention)
+        start = 2
+        for i in range(1, dimention // 2 + 1):
+            start = start * ((2 * math.pi)/(i*2-1))
+        start = start * (sphere[dimention])**(dimention-1) 
+        return start
+    else:
+        start = 2 * math.pi
+        for i in range(2, dimention // 2 + 1):
+            start = start * ((2 * math.pi)/(i*2-2))
+        start = start * (sphere[dimention])**(dimention-1) 
+        return start
+
 
 def calculateVolume(sphere, dimention):
     if (dimention == 2):
@@ -69,6 +90,11 @@ print("Max number of 4d spheres around a 4d sphere: ", calculateSurfaceArea(auxS
 
 #5d
 print("Max number of 5d spheres around a 5d sphere: ", calculateSurfaceArea(auxSphere5d, 5)/calculateVolume(sphere4d, 4))
+
+#6d
+print("Max number of 6d spheres around a 6d sphere: ", calculateSurfaceArea(auxSphere6d, 6)/calculateVolume(sphere5d, 5))
+
+
 
 # x1**2 + x2**2 + x3**2 + x4**2 = 1 // This is the representation of all points at the edge of the sphere
 # Distancia entre 2 pontos no espaço-
